@@ -197,5 +197,12 @@ corresponding to the mode line clicked."
   (if (member major-mode simple-modeline-word-count-modes)
       (format " %dW" (count-words (point-min) (point-max)))))
 
+(defun simple-modeline-segment-display-time ()
+  "Display the time with the date and Emacs uptime in the tooltip."
+  (propertize (format-time-string " %H:%M")
+	      'help-echo
+	      (concat (format-time-string "%c; ")
+		      (emacs-uptime "Uptime:%hh"))))
+
 (provide 'simple-modeline-segments)
 ;;; simple-modeline-segments.el ends here
